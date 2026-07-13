@@ -1,0 +1,10 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-image-output": "~0.6.4",
+        "node-red-contrib-modbus": "~5.43.0"
+    }
+}

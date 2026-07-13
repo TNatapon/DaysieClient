@@ -1,0 +1,11 @@
+.flowedit {
+  height: calc(
+    100vh - 69px
+  ); /* Ensures the div fills the full height of its parent */
+}
+
+.iframe {
+  width: 100%;
+  height: 100%; /* Ensures the iframe fills the full height of its parent */
+  border: none; /* Optional: removes iframe border */
+}

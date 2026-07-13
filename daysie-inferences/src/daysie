@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Usage:
+# ./run_server init
+# ./run_server start <port> <python_file_without_extension>
+# ./run_server stop
+# ./run_server status
+# ./run_server inference <port> <python_file_without_extension>
+
+IMAGE_NAME="daysie-inference-311-215:1.0"
+CONTAINER_NAME="daysie-inference"
+
+COMMAND=$1
+
+case "$COMMAND" in
+  init)
+    echo "Building Docker image..."
+    docker build --no-cache -t $IMAGE_NAME .
+    ;;
+
+  start)
+    PORT=${2:-8000}
+    APP_FILE=${3:-inference-audio-classification}
+    echo "Starting server on port $PORT using $APP_FILE.py..."
+    docker run -d --rm --name $CONTAINER_NAME -p ${PORT}:8000 -v "$PWD":/app $IMAGE_NAME \
+      uvicorn ${APP_FILE}:app --host 0.0.0.0 --port $PORT
+    ;;
+
+  stop)
+    echo "Stopping server..."
+    docker stop $CONTAINER_NAME
+    ;;
+
+  status)
+    echo "Checking server status..."
+    if docker ps --filter "name=$CONTAINER_NAME" --format '{{.Names}}' | grep -q $CONTAINER_NAME; then
+      echo "✅ Server '$CONTAINER_NAME' is running."
+    else
+      echo "❌ Server '$CONTAINER_NAME' is not running."
+    fi
+    ;;
+
+  inference)
+    PORT=${2:-8000}
+    APP_FILE=${3:-inference-audio-classification}
+    echo "Running inference server (temporary) on port $PORT using $APP_FILE.py..."
+    docker run --rm -p ${PORT}:8000 -v "$PWD":/app $IMAGE_NAME \
+      uvicorn ${APP_FILE}:app --host 0.0.0.0 --port $PORT
+    ;;
+
+  *)
+    echo "Unknown command: $COMMAND"
+    echo "Usage: ./run_server [init|start|stop|status|inference] <port> <python_file_without_extension>"
+    exit 1
+    ;;
+esac
+

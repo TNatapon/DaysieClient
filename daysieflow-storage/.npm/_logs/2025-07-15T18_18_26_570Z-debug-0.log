@@ -1,0 +1,37 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/.npmrc
+5 silly config load:file:/root/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install node-red-contrib-image-output@0.6.4
+8 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--omit" "dev" "--engine-strict" "node-red-contrib-image-output@0.6.4"
+9 verbose logfile logs-max:10 dir:/data/.npm/_logs/2025-07-15T18_18_26_570Z-
+10 verbose logfile /data/.npm/_logs/2025-07-15T18_18_26_570Z-debug-0.log
+11 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest node-red-contrib-image-output@0.6.4
+15 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-image-output cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-image-output 1151ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-image-output set size:undefined disposed:false
+18 silly placeDep ROOT node-red-contrib-image-output@0.6.4 OK for: node-red-project@0.0.1 want: 0.6.4
+19 silly fetch manifest jimp-compact@~0.10.1
+20 silly packumentCache full:https://registry.npmjs.org/jimp-compact cache-miss
+21 http fetch GET 200 https://registry.npmjs.org/jimp-compact 217ms (cache miss)
+22 silly packumentCache full:https://registry.npmjs.org/jimp-compact set size:undefined disposed:false
+23 silly placeDep ROOT jimp-compact@0.10.3 OK for: node-red-contrib-image-output@0.6.4 want: ~0.10.1
+24 silly reify moves {}
+25 silly tarball no local data for node-red-contrib-image-output@https://registry.npmjs.org/node-red-contrib-image-output/-/node-red-contrib-image-output-0.6.4.tgz. Extracting by manifest.
+26 silly tarball no local data for jimp-compact@https://registry.npmjs.org/jimp-compact/-/jimp-compact-0.10.3.tgz. Extracting by manifest.
+27 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-image-output/-/node-red-contrib-image-output-0.6.4.tgz 200ms (cache miss)
+28 http fetch GET 200 https://registry.npmjs.org/jimp-compact/-/jimp-compact-0.10.3.tgz 203ms (cache miss)
+29 silly ADD node_modules/jimp-compact
+30 silly ADD node_modules/node-red-contrib-image-output
+31 verbose cwd /data
+32 verbose os Linux 6.6.87.2-microsoft-standard-WSL2
+33 verbose node v20.19.0
+34 verbose npm  v10.8.2
+35 verbose exit 0
+36 info ok

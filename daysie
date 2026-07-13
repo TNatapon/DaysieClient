@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Function to display script usage
+show_usage() {
+    echo "Usage: daysie [OPTION]"
+    echo
+    echo "Options:"
+    echo "  up        : Start the software"
+    echo "  down      : Stop and remove the software"
+    echo "  restart   : Restart the software"
+    echo "  --help    : Display help for a specific option"
+    echo
+    echo "Choose one option from the list."
+}
+
+# Docker Compose Up
+compose_up() {
+    docker compose up -d
+}
+
+# Docker Compose Down
+compose_down() {
+    docker compose down
+}
+
+# Docker Compose Restart
+compose_restart() {
+    docker compose restart
+}
+
+# Main Script
+case "$1" in
+    up)
+        compose_up
+        ;;
+    down)
+        compose_down
+        ;;
+    restart)
+        compose_restart
+        ;;
+    --help)
+        show_usage
+        ;;
+    *)
+        show_usage
+        exit 1
+        ;;
+esac
+

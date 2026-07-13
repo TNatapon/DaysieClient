@@ -1,0 +1,9 @@
+influxdb-storage
+#daysieflow-storage
+daysiemq-storage/data
+daysiemq-storage/log
+grafana-storage
+
+./node_modules
+node_modules
+.vscode

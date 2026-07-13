@@ -1,0 +1,247 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/data/.npmrc
+5 silly config load:file:/root/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install node-red-contrib-audio@1.0.2
+8 verbose argv "install" "--no-audit" "--no-update-notifier" "--no-fund" "--save" "--save-prefix" "~" "--omit" "dev" "--engine-strict" "node-red-contrib-audio@1.0.2"
+9 verbose logfile logs-max:10 dir:/data/.npm/_logs/2025-07-15T18_19_52_835Z-
+10 verbose logfile /data/.npm/_logs/2025-07-15T18_19_52_835Z-debug-0.log
+11 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest node-red-contrib-audio@1.0.2
+15 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-audio cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-audio 1037ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/node-red-contrib-audio set size:undefined disposed:false
+18 silly placeDep ROOT node-red-contrib-audio@1.0.2 OK for: node-red-project@0.0.1 want: 1.0.2
+19 silly fetch manifest lame@^1.2.4
+20 silly packumentCache full:https://registry.npmjs.org/lame cache-miss
+21 silly fetch manifest speaker@^0.3.0
+22 silly packumentCache full:https://registry.npmjs.org/speaker cache-miss
+23 http fetch GET 200 https://registry.npmjs.org/speaker 977ms (cache miss)
+24 silly packumentCache full:https://registry.npmjs.org/speaker set size:undefined disposed:false
+25 http fetch GET 200 https://registry.npmjs.org/lame 995ms (cache miss)
+26 silly packumentCache full:https://registry.npmjs.org/lame set size:undefined disposed:false
+27 silly placeDep ROOT lame@1.2.4 OK for: node-red-contrib-audio@1.0.2 want: ^1.2.4
+28 silly placeDep ROOT speaker@0.3.1 OK for: node-red-contrib-audio@1.0.2 want: ^0.3.0
+29 silly fetch manifest bindings@^1.2.1
+30 silly packumentCache full:https://registry.npmjs.org/bindings cache-miss
+31 silly fetch manifest debug@^2.2.0
+32 silly packumentCache full:https://registry.npmjs.org/debug cache-miss
+33 silly fetch manifest readable-stream@^1.0.34
+34 silly packumentCache full:https://registry.npmjs.org/readable-stream cache-miss
+35 silly fetch manifest nan@^2.3.5
+36 silly packumentCache full:https://registry.npmjs.org/nan cache-miss
+37 silly fetch manifest bindings@^1.2.1
+38 silly packumentCache full:https://registry.npmjs.org/bindings cache-miss
+39 silly fetch manifest debug@^2.2.0
+40 silly packumentCache full:https://registry.npmjs.org/debug cache-miss
+41 silly fetch manifest nan@^2.2.0
+42 silly packumentCache full:https://registry.npmjs.org/nan cache-miss
+43 silly fetch manifest readable-stream@^2.0.5
+44 silly packumentCache full:https://registry.npmjs.org/readable-stream cache-miss
+45 http fetch GET 200 https://registry.npmjs.org/debug 215ms (cache miss)
+46 silly packumentCache full:https://registry.npmjs.org/debug set size:undefined disposed:false
+47 http fetch GET 200 https://registry.npmjs.org/nan 219ms (cache miss)
+48 silly packumentCache full:https://registry.npmjs.org/nan set size:undefined disposed:false
+49 http fetch GET 200 https://registry.npmjs.org/debug 220ms (cache miss)
+50 silly packumentCache full:https://registry.npmjs.org/debug set size:undefined disposed:false
+51 http fetch GET 200 https://registry.npmjs.org/nan 224ms (cache miss)
+52 silly packumentCache full:https://registry.npmjs.org/nan set size:undefined disposed:false
+53 http fetch GET 200 https://registry.npmjs.org/readable-stream 253ms (cache miss)
+54 silly packumentCache full:https://registry.npmjs.org/readable-stream set size:undefined disposed:false
+55 http fetch GET 200 https://registry.npmjs.org/readable-stream 258ms (cache miss)
+56 silly packumentCache full:https://registry.npmjs.org/readable-stream set size:undefined disposed:false
+57 http fetch GET 200 https://registry.npmjs.org/bindings 292ms (cache miss)
+58 silly packumentCache full:https://registry.npmjs.org/bindings set size:undefined disposed:false
+59 http fetch GET 200 https://registry.npmjs.org/bindings 292ms (cache miss)
+60 silly packumentCache full:https://registry.npmjs.org/bindings set size:undefined disposed:false
+61 silly placeDep ROOT bindings@1.5.0 OK for: lame@1.2.4 want: ^1.2.1
+62 silly placeDep ROOT debug@2.6.9 OK for: lame@1.2.4 want: ^2.2.0
+63 silly placeDep ROOT nan@2.23.0 OK for: lame@1.2.4 want: ^2.3.5
+64 silly placeDep ROOT readable-stream@1.1.14 OK for: lame@1.2.4 want: ^1.0.34
+65 silly fetch manifest file-uri-to-path@1.0.0
+66 silly packumentCache full:https://registry.npmjs.org/file-uri-to-path cache-miss
+67 silly fetch manifest ms@2.0.0
+68 silly packumentCache full:https://registry.npmjs.org/ms cache-miss
+69 silly fetch manifest isarray@0.0.1
+70 silly packumentCache full:https://registry.npmjs.org/isarray cache-miss
+71 silly fetch manifest inherits@~2.0.1
+72 silly packumentCache full:https://registry.npmjs.org/inherits cache-miss
+73 silly fetch manifest core-util-is@~1.0.0
+74 silly packumentCache full:https://registry.npmjs.org/core-util-is cache-miss
+75 silly fetch manifest string_decoder@~0.10.x
+76 silly packumentCache full:https://registry.npmjs.org/string_decoder cache-miss
+77 http fetch GET 200 https://registry.npmjs.org/isarray 138ms (cache miss)
+78 silly packumentCache full:https://registry.npmjs.org/isarray set size:undefined disposed:false
+79 http fetch GET 200 https://registry.npmjs.org/core-util-is 138ms (cache miss)
+80 silly packumentCache full:https://registry.npmjs.org/core-util-is set size:undefined disposed:false
+81 http fetch GET 200 https://registry.npmjs.org/inherits 142ms (cache miss)
+82 silly packumentCache full:https://registry.npmjs.org/inherits set size:undefined disposed:false
+83 http fetch GET 200 https://registry.npmjs.org/string_decoder 141ms (cache miss)
+84 silly packumentCache full:https://registry.npmjs.org/string_decoder set size:undefined disposed:false
+85 http fetch GET 200 https://registry.npmjs.org/ms 157ms (cache miss)
+86 silly packumentCache full:https://registry.npmjs.org/ms set size:undefined disposed:false
+87 http fetch GET 200 https://registry.npmjs.org/file-uri-to-path 164ms (cache miss)
+88 silly packumentCache full:https://registry.npmjs.org/file-uri-to-path set size:undefined disposed:false
+89 silly placeDep ROOT file-uri-to-path@1.0.0 OK for: bindings@1.5.0 want: 1.0.0
+90 silly placeDep ROOT ms@2.0.0 OK for: debug@2.6.9 want: 2.0.0
+91 silly placeDep ROOT core-util-is@1.0.3 OK for: readable-stream@1.1.14 want: ~1.0.0
+92 silly placeDep ROOT inherits@2.0.4 OK for: readable-stream@1.1.14 want: ~2.0.1
+93 silly placeDep ROOT isarray@0.0.1 OK for: readable-stream@1.1.14 want: 0.0.1
+94 silly placeDep ROOT string_decoder@0.10.31 OK for: readable-stream@1.1.14 want: ~0.10.x
+95 silly placeDep node_modules/speaker readable-stream@2.3.8 OK for: speaker@0.3.1 want: ^2.0.5
+96 silly fetch manifest isarray@~1.0.0
+97 silly packumentCache full:https://registry.npmjs.org/isarray cache-miss
+98 silly fetch manifest safe-buffer@~5.1.1
+99 silly packumentCache full:https://registry.npmjs.org/safe-buffer cache-miss
+100 silly fetch manifest string_decoder@~1.1.1
+101 silly packumentCache full:https://registry.npmjs.org/string_decoder cache-miss
+102 silly fetch manifest util-deprecate@~1.0.1
+103 silly packumentCache full:https://registry.npmjs.org/util-deprecate cache-miss
+104 silly fetch manifest process-nextick-args@~2.0.0
+105 silly packumentCache full:https://registry.npmjs.org/process-nextick-args cache-miss
+106 http fetch GET 200 https://registry.npmjs.org/string_decoder 91ms (cache hit)
+107 silly packumentCache full:https://registry.npmjs.org/string_decoder set size:28441 disposed:false
+108 http fetch GET 200 https://registry.npmjs.org/isarray 98ms (cache hit)
+109 silly packumentCache full:https://registry.npmjs.org/isarray set size:17392 disposed:false
+110 http fetch GET 200 https://registry.npmjs.org/util-deprecate 140ms (cache miss)
+111 silly packumentCache full:https://registry.npmjs.org/util-deprecate set size:undefined disposed:false
+112 http fetch GET 200 https://registry.npmjs.org/process-nextick-args 142ms (cache miss)
+113 silly packumentCache full:https://registry.npmjs.org/process-nextick-args set size:undefined disposed:false
+114 http fetch GET 200 https://registry.npmjs.org/safe-buffer 156ms (cache miss)
+115 silly packumentCache full:https://registry.npmjs.org/safe-buffer set size:undefined disposed:false
+116 silly placeDep node_modules/speaker isarray@1.0.0 OK for: readable-stream@2.3.8 want: ~1.0.0
+117 silly placeDep ROOT process-nextick-args@2.0.1 OK for: readable-stream@2.3.8 want: ~2.0.0
+118 silly placeDep ROOT safe-buffer@5.1.2 OK for: readable-stream@2.3.8 want: ~5.1.1
+119 silly placeDep node_modules/speaker string_decoder@1.1.1 OK for: readable-stream@2.3.8 want: ~1.1.1
+120 silly placeDep ROOT util-deprecate@1.0.2 OK for: readable-stream@2.3.8 want: ~1.0.1
+121 silly reify moves {}
+122 silly tarball no local data for safe-buffer@https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz. Extracting by manifest.
+123 silly tarball no local data for process-nextick-args@https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz. Extracting by manifest.
+124 silly tarball no local data for isarray@https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz. Extracting by manifest.
+125 silly tarball no local data for string_decoder@https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz. Extracting by manifest.
+126 silly tarball no local data for util-deprecate@https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz. Extracting by manifest.
+127 silly tarball no local data for inherits@https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz. Extracting by manifest.
+128 silly tarball no local data for core-util-is@https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz. Extracting by manifest.
+129 silly tarball no local data for file-uri-to-path@https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz. Extracting by manifest.
+130 silly tarball no local data for lame@https://registry.npmjs.org/lame/-/lame-1.2.4.tgz. Extracting by manifest.
+131 silly tarball no local data for ms@https://registry.npmjs.org/ms/-/ms-2.0.0.tgz. Extracting by manifest.
+132 silly tarball no local data for speaker@https://registry.npmjs.org/speaker/-/speaker-0.3.1.tgz. Extracting by manifest.
+133 silly tarball no local data for readable-stream@https://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz. Extracting by manifest.
+134 silly tarball no local data for nan@https://registry.npmjs.org/nan/-/nan-2.23.0.tgz. Extracting by manifest.
+135 silly tarball no local data for debug@https://registry.npmjs.org/debug/-/debug-2.6.9.tgz. Extracting by manifest.
+136 silly tarball no local data for bindings@https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz. Extracting by manifest.
+137 silly tarball no local data for node-red-contrib-audio@https://registry.npmjs.org/node-red-contrib-audio/-/node-red-contrib-audio-1.0.2.tgz. Extracting by manifest.
+138 silly tarball no local data for string_decoder@https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz. Extracting by manifest.
+139 silly tarball no local data for readable-stream@https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz. Extracting by manifest.
+140 silly tarball no local data for isarray@https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz. Extracting by manifest.
+141 http fetch GET 200 https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz 405ms (cache miss)
+142 http fetch GET 200 https://registry.npmjs.org/string_decoder/-/string_decoder-0.10.31.tgz 411ms (cache miss)
+143 http fetch GET 200 https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz 420ms (cache miss)
+144 http fetch GET 200 https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz 427ms (cache miss)
+145 http fetch GET 200 https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz 420ms (cache miss)
+146 http fetch GET 200 https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz 420ms (cache miss)
+147 http fetch GET 200 https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz 447ms (cache miss)
+148 http fetch GET 200 https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz 396ms (cache miss)
+149 http fetch GET 200 https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz 437ms (cache miss)
+150 http fetch GET 200 https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz 399ms (cache miss)
+151 http fetch GET 200 https://registry.npmjs.org/ms/-/ms-2.0.0.tgz 453ms (cache miss)
+152 http fetch GET 200 https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz 447ms (cache miss)
+153 http fetch GET 200 https://registry.npmjs.org/debug/-/debug-2.6.9.tgz 528ms (cache miss)
+154 http fetch GET 200 https://registry.npmjs.org/readable-stream/-/readable-stream-1.1.14.tgz 535ms (cache miss)
+155 http fetch GET 200 https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz 535ms (cache miss)
+156 http fetch GET 200 https://registry.npmjs.org/nan/-/nan-2.23.0.tgz 658ms (cache miss)
+157 http fetch GET 200 https://registry.npmjs.org/node-red-contrib-audio/-/node-red-contrib-audio-1.0.2.tgz 844ms (cache miss)
+158 http fetch GET 200 https://registry.npmjs.org/speaker/-/speaker-0.3.1.tgz 1452ms (cache miss)
+159 http fetch GET 200 https://registry.npmjs.org/lame/-/lame-1.2.4.tgz 4292ms (cache miss)
+160 info run lame@1.2.4 install node_modules/lame node-gyp rebuild
+161 info run speaker@0.3.1 install node_modules/speaker node-gyp rebuild
+162 info run speaker@0.3.1 install { code: 1, signal: null }
+163 info run lame@1.2.4 install { code: 7, signal: null }
+164 verbose stack Error: command failed
+164 verbose stack     at promiseSpawn (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:22:22)
+164 verbose stack     at spawnWithShell (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:124:10)
+164 verbose stack     at promiseSpawn (/usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js:12:12)
+164 verbose stack     at runScriptPkg (/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/run-script-pkg.js:77:13)
+164 verbose stack     at runScript (/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/run-script.js:9:12)
+164 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/rebuild.js:329:17
+164 verbose stack     at run (/usr/local/lib/node_modules/npm/node_modules/promise-call-limit/dist/commonjs/index.js:67:22)
+164 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/promise-call-limit/dist/commonjs/index.js:84:9
+164 verbose stack     at new Promise (<anonymous>)
+164 verbose stack     at callLimit (/usr/local/lib/node_modules/npm/node_modules/promise-call-limit/dist/commonjs/index.js:35:69)
+165 verbose pkgid speaker@0.3.1
+166 error code 1
+167 error path /data/node_modules/speaker
+168 error command failed
+169 error command sh -c node-gyp rebuild
+170 error make: Entering directory '/data/node_modules/speaker/build'
+170 error   CC(target) Release/obj.target/output/deps/mpg123/src/output/alsa.o
+170 error make: Leaving directory '/data/node_modules/speaker/build'
+171 error gyp info it worked if it ends with ok
+171 error gyp info using node-gyp@10.1.0
+171 error gyp info using node@20.19.0 | linux | x64
+171 error gyp info find Python using Python version 3.9.2 found at "/usr/bin/python3"
+171 error gyp http GET https://nodejs.org/download/release/v20.19.0/node-v20.19.0-headers.tar.gz
+171 error gyp http 200 https://nodejs.org/download/release/v20.19.0/node-v20.19.0-headers.tar.gz
+171 error gyp http GET https://nodejs.org/download/release/v20.19.0/SHASUMS256.txt
+171 error gyp http 200 https://nodejs.org/download/release/v20.19.0/SHASUMS256.txt
+171 error gyp info spawn /usr/bin/python3
+171 error gyp info spawn args [
+171 error gyp info spawn args '/usr/local/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',
+171 error gyp info spawn args 'binding.gyp',
+171 error gyp info spawn args '-f',
+171 error gyp info spawn args 'make',
+171 error gyp info spawn args '-I',
+171 error gyp info spawn args '/data/node_modules/speaker/build/config.gypi',
+171 error gyp info spawn args '-I',
+171 error gyp info spawn args '/usr/local/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',
+171 error gyp info spawn args '-I',
+171 error gyp info spawn args '/root/.cache/node-gyp/20.19.0/include/node/common.gypi',
+171 error gyp info spawn args '-Dlibrary=shared_library',
+171 error gyp info spawn args '-Dvisibility=default',
+171 error gyp info spawn args '-Dnode_root_dir=/root/.cache/node-gyp/20.19.0',
+171 error gyp info spawn args '-Dnode_gyp_dir=/usr/local/lib/node_modules/npm/node_modules/node-gyp',
+171 error gyp info spawn args '-Dnode_lib_file=/root/.cache/node-gyp/20.19.0/<(target_arch)/node.lib',
+171 error gyp info spawn args '-Dmodule_root_dir=/data/node_modules/speaker',
+171 error gyp info spawn args '-Dnode_engine=v8',
+171 error gyp info spawn args '--depth=.',
+171 error gyp info spawn args '--no-parallel',
+171 error gyp info spawn args '--generator-output',
+171 error gyp info spawn args 'build',
+171 error gyp info spawn args '-Goutput_dir=.'
+171 error gyp info spawn args ]
+171 error gyp info spawn make
+171 error gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
+171 error make: Warning: File 'deps/mpg123/test.target.mk' has modification time 0.84 s in the future
+171 error ../deps/mpg123/src/output/alsa.c:19:10: fatal error: alsa/asoundlib.h: No such file or directory
+171 error    19 | #include <alsa/asoundlib.h>
+171 error       |          ^~~~~~~~~~~~~~~~~~
+171 error compilation terminated.
+171 error make: *** [deps/mpg123/output.target.mk:123: Release/obj.target/output/deps/mpg123/src/output/alsa.o] Error 1
+171 error gyp ERR! build error 
+171 error gyp ERR! stack Error: `make` failed with exit code: 2
+171 error gyp ERR! stack at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:209:23)
+171 error gyp ERR! System Linux 6.6.87.2-microsoft-standard-WSL2
+171 error gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+171 error gyp ERR! cwd /data/node_modules/speaker
+171 error gyp ERR! node -v v20.19.0
+171 error gyp ERR! node-gyp -v v10.1.0
+171 error gyp ERR! not ok
+172 silly unfinished npm timer reify 1752603593564
+173 silly unfinished npm timer reify:build 1752603600849
+174 silly unfinished npm timer build 1752603600850
+175 silly unfinished npm timer build:deps 1752603600850
+176 silly unfinished npm timer build:run:install 1752603600870
+177 silly unfinished npm timer build:run:install:node_modules/lame 1752603600870
+178 silly unfinished npm timer build:run:install:node_modules/speaker 1752603600893
+179 verbose cwd /data
+180 verbose os Linux 6.6.87.2-microsoft-standard-WSL2
+181 verbose node v20.19.0
+182 verbose npm  v10.8.2
+183 verbose exit 1
+184 verbose code 1
+185 error A complete log of this run can be found in: /data/.npm/_logs/2025-07-15T18_19_52_835Z-debug-0.log

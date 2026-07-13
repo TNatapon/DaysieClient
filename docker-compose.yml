@@ -1,0 +1,139 @@
+version: "3.8"
+
+services:
+  influxdb:
+    image: influxdb:2.7.1
+    container_name: db-1
+    volumes:
+      - ./influxdb-storage:/var/lib/influxdb2:rw
+    env_file:
+      - .env
+    entrypoint: ["./entrypoint.sh"]
+    ports:
+      - ${DOCKER_INFLUXDB_INIT_PORT}:8086
+    restart: always
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: daysiemq-1
+    volumes:
+      - ./daysiemq-storage/config:/mosquitto/config
+      - ./daysiemq-storage/data:/mosquitto/data
+      - ./daysiemq-storage/log:/mosquitto/log
+     # - ./daysiemq-storage/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    restart: always
+
+  telegraf:
+    image: telegraf:1.25.0
+    container_name: agent-1
+    volumes:
+      - ${TELEGRAF_CFG_PATH}:/etc/telegraf/telegraf.conf:rw
+    env_file:
+      - .env
+    depends_on:
+      - influxdb
+    restart: always
+
+  grafana:
+    image: grafana/grafana:10.0.1
+    container_name: dashboard-1
+    volumes:
+      - ./grafana-storage:/var/lib/grafana:rw
+    user: "0"
+    env_file:
+      - .env
+    ports:
+      - ${GRAFANA_PORT}:3000
+    restart: always
+
+  daysieui:
+    build:
+      context: ./Daysie-UI
+      dockerfile: Dockerfile
+    image: daysie-ui:1.0
+    container_name: daysie-ui-1
+    ports:
+      - 3005:3005
+    restart: always
+
+  daysieflow:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    image: daysieflow:1.0
+    container_name: daysieflow-1
+    volumes:
+      - ./daysieflow-storage:/data
+    ports:
+      - 1880:1880
+    restart: always
+
+  daysie-api:
+    build:
+      context: ./daysie-api
+      dockerfile: Dockerfile
+    image: daysie-api:1.0
+    container_name: daysie-api-1
+    volumes:
+      - ./daysieflow-storage/daysie-und/model:/app/model
+      - ./daysie-api/cmd:/app/cmd
+    ports:
+      - 8080:8080
+    restart: always
+
+  daysie-images-inference:
+    build:
+      context: ./daysie-inferences/build
+      dockerfile: Dockerfile
+    image: daysie-inference-311-215:2.0
+    container_name: daysie-images-inference
+    ports:
+      - 9000
+    volumes:
+      - ./daysie-inferences/src:/app
+      - ./daysieflow-storage/daysie-und/result:/app/result
+    command: >
+      uvicorn images:app --host 0.0.0.0 --port 9000
+    restart: always
+
+  daysie-audio-inference:
+    build:
+      context: ./daysie-inferences/build
+      dockerfile: Dockerfile
+    image: daysie-inference-311-215:2.0
+    container_name: daysie-audio-inference
+    ports:
+      - 9001
+    volumes:
+      - ./daysie-inferences/src:/app
+      - ./daysieflow-storage/daysie-und/result:/app/result
+    command: >
+      uvicorn audio:app --host 0.0.0.0 --port 9001
+    restart: always
+
+  daysie-timeserie-inference:
+    build:
+      context: ./daysie-inferences/build
+      dockerfile: Dockerfile
+    image: daysie-inference-311-215:2.0
+    container_name: daysie-timeseries-inference
+    ports:
+      - 9002
+    volumes:
+      - ./daysie-inferences/src:/app
+      - ./daysieflow-storage/daysie-und/result:/app/result
+    command: >
+      uvicorn lstm-regression:app --host 0.0.0.0 --port 9002
+    restart: always
+
+  # daysie-knn-inference:
+  #   image: daysie-knn-inference:1.0
+  #   container_name: daysie-knn-inference
+  #   ports:
+  #     - 9003
+  #   volumes:
+  #     - ./daysieflow-storage/daysie-und/model:/app/weigths
+  #     - ./daysieflow-storage/daysie-und/config/vibe_config.toml:/app/vibe_config.toml
+  #   command: >
+  #     uvicorn daysie-suc-inference:app --host 0.0.0.0 --port 9003
+  #   restart: always

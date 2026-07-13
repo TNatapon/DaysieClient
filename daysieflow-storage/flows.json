@@ -1,0 +1,1173 @@
+[
+    {
+        "id": "529d42eb902460a4",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1154cd9ed8282204",
+        "type": "subflow",
+        "name": "Daysie Image",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "383125e88ca32abe"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1260,
+                "y": 260,
+                "wires": [
+                    {
+                        "id": "3adc7d914574ee53",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 640,
+                "y": 440,
+                "wires": [
+                    {
+                        "id": "2d0e19636e1ee48a",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "IMAGE_FILE",
+                "type": "str",
+                "value": "cast_def_0_0.png",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "MODEL_FILE",
+                "type": "str",
+                "value": "model.h5",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "METADATA_FILE",
+                "type": "str",
+                "value": "metadata.json",
+                "ui": {
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "str"
+                        ]
+                    }
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#FFCC66",
+        "icon": "font-awesome/fa-asterisk"
+    },
+    {
+        "id": "2fa74fdb06de204b",
+        "type": "subflow",
+        "name": "Daysie Audio",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 180,
+                "y": 200,
+                "wires": [
+                    {
+                        "id": "7c07a91c8db24c00"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1360,
+                "y": 260,
+                "wires": [
+                    {
+                        "id": "4bed1f74748d1c16",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "AUDIO_FILE",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "MODEL_FILE",
+                "type": "str",
+                "value": "model.h5"
+            },
+            {
+                "name": "METADATA_FILE",
+                "type": "str",
+                "value": "metadata.json"
+            }
+        ],
+        "meta": {},
+        "color": "#FFCC66",
+        "icon": "font-awesome/fa-asterisk"
+    },
+    {
+        "id": "fb4877504222d7e5",
+        "type": "subflow",
+        "name": "Daysie Timeseries",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "3a21a330eca5a82b"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1300,
+                "y": 240,
+                "wires": [
+                    {
+                        "id": "3cbeac038b8b17a5",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1300,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "de950c2ee50e4643",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "CSV_FILE",
+                "type": "str",
+                "value": ""
+            },
+            {
+                "name": "MODEL_FILE",
+                "type": "str",
+                "value": "model.h5"
+            },
+            {
+                "name": "METADATA_FILE",
+                "type": "str",
+                "value": "metadata.json"
+            }
+        ],
+        "meta": {},
+        "color": "#FFCC66",
+        "icon": "font-awesome/fa-asterisk"
+    },
+    {
+        "id": "e3984e9953ef8fbc",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "daysiemq-1",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "383125e88ca32abe",
+        "type": "function",
+        "z": "1154cd9ed8282204",
+        "name": "Build full paths",
+        "func": "const model_base = \"/data/daysie-und/model\";\nconst test_base = \"/data/daysie-und/test\";\nmsg.metadata_path = model_base + \"/\" + env.get(\"METADATA_FILE\");\nmsg.model_path = model_base + \"/\" + env.get(\"MODEL_FILE\");\nmsg.image_path = test_base + \"/\" + env.get(\"IMAGE_FILE\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 200,
+        "wires": [
+            [
+                "eb406d0ccaf93a0b"
+            ]
+        ]
+    },
+    {
+        "id": "eb406d0ccaf93a0b",
+        "type": "file in",
+        "z": "1154cd9ed8282204",
+        "name": "Load metadata.json",
+        "filename": "metadata_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "9ca1322ed9cac1f1"
+            ]
+        ]
+    },
+    {
+        "id": "9ca1322ed9cac1f1",
+        "type": "change",
+        "z": "1154cd9ed8282204",
+        "name": "Set msg.result_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "result_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "54b3e37807195d46"
+            ]
+        ]
+    },
+    {
+        "id": "54b3e37807195d46",
+        "type": "file in",
+        "z": "1154cd9ed8282204",
+        "name": "Load model.h5",
+        "filename": "model_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "64bbbba92634695c"
+            ]
+        ]
+    },
+    {
+        "id": "64bbbba92634695c",
+        "type": "change",
+        "z": "1154cd9ed8282204",
+        "name": "Set msg.model_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "model_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 670,
+        "y": 260,
+        "wires": [
+            [
+                "2d0e19636e1ee48a"
+            ]
+        ]
+    },
+    {
+        "id": "2d0e19636e1ee48a",
+        "type": "file in",
+        "z": "1154cd9ed8282204",
+        "name": "Load image.png",
+        "filename": "image_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "0629c5c327d6e6ae"
+            ]
+        ]
+    },
+    {
+        "id": "0629c5c327d6e6ae",
+        "type": "change",
+        "z": "1154cd9ed8282204",
+        "name": "Set msg.image_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "image_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 670,
+        "y": 320,
+        "wires": [
+            [
+                "76946eecc71202c9"
+            ]
+        ]
+    },
+    {
+        "id": "76946eecc71202c9",
+        "type": "function",
+        "z": "1154cd9ed8282204",
+        "name": "Build multipart/form-data",
+        "func": "msg.headers = {\n    \"Content-Type\": \"multipart/form-data\"\n};\n\nmsg.payload = {\n    result_file: {\n        value: msg.result_file.buffer,\n        options: {\n            filename: msg.result_file.filename,\n            contentType: \"application/json\"\n        }\n    },\n    model_file: {\n        value: msg.model_file.buffer,\n        options: {\n            filename: msg.model_file.filename,\n            contentType: \"application/octet-stream\"\n        }\n    },\n    image_file: {\n        value: msg.image_file.buffer,\n        options: {\n            filename: msg.image_file.filename,\n            contentType: \"image/png\"\n        }\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 260,
+        "wires": [
+            [
+                "3adc7d914574ee53"
+            ]
+        ]
+    },
+    {
+        "id": "3adc7d914574ee53",
+        "type": "http request",
+        "z": "1154cd9ed8282204",
+        "name": "POST /predict",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://daysie-images-inference:9000/predict",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1130,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7c07a91c8db24c00",
+        "type": "function",
+        "z": "2fa74fdb06de204b",
+        "name": "Build full paths",
+        "func": "const model_base = \"/data/daysie-und/model\";\nconst test_base = \"/data/daysie-und/test\";\nmsg.metadata_path = model_base + \"/\" + env.get(\"METADATA_FILE\");\nmsg.model_path = model_base + \"/\" + env.get(\"MODEL_FILE\");\nmsg.audio_path = test_base + \"/\" + env.get(\"AUDIO_FILE\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 200,
+        "wires": [
+            [
+                "912ef0e8c2b292cb"
+            ]
+        ]
+    },
+    {
+        "id": "912ef0e8c2b292cb",
+        "type": "file in",
+        "z": "2fa74fdb06de204b",
+        "name": "Load metadata.json",
+        "filename": "metadata_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "8d9a27dae7eb35dc"
+            ]
+        ]
+    },
+    {
+        "id": "8d9a27dae7eb35dc",
+        "type": "change",
+        "z": "2fa74fdb06de204b",
+        "name": "Set msg.result_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "result_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "065a5594aba92a24"
+            ]
+        ]
+    },
+    {
+        "id": "065a5594aba92a24",
+        "type": "file in",
+        "z": "2fa74fdb06de204b",
+        "name": "Load model.h5",
+        "filename": "model_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "3d075944822e80c9"
+            ]
+        ]
+    },
+    {
+        "id": "3d075944822e80c9",
+        "type": "change",
+        "z": "2fa74fdb06de204b",
+        "name": "Set msg.model_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "model_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 750,
+        "y": 260,
+        "wires": [
+            [
+                "9d780f1908ec1248"
+            ]
+        ]
+    },
+    {
+        "id": "9d780f1908ec1248",
+        "type": "file in",
+        "z": "2fa74fdb06de204b",
+        "name": "Load audio",
+        "filename": "audio_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "3507f55d39c6e8f6"
+            ]
+        ]
+    },
+    {
+        "id": "3507f55d39c6e8f6",
+        "type": "change",
+        "z": "2fa74fdb06de204b",
+        "name": "Set msg.audio_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "audio_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 750,
+        "y": 320,
+        "wires": [
+            [
+                "41a8575f9c7e2b1f"
+            ]
+        ]
+    },
+    {
+        "id": "41a8575f9c7e2b1f",
+        "type": "function",
+        "z": "2fa74fdb06de204b",
+        "name": "Build multipart/form-data",
+        "func": "msg.headers = {\n    \"Content-Type\": \"multipart/form-data\"\n};\n\nmsg.payload = {\n    result_file: {\n        value: msg.result_file.buffer,\n        options: {\n            filename: msg.result_file.filename,\n            contentType: \"application/json\"\n        }\n    },\n    model_file: {\n        value: msg.model_file.buffer,\n        options: {\n            filename: msg.model_file.filename,\n            contentType: \"application/octet-stream\"\n        }\n    },\n    audio_file: {\n        value: msg.audio_file.buffer,\n        options: {\n            filename: msg.audio_file.filename,\n            contentType: \"audio/wav\"\n        }\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 260,
+        "wires": [
+            [
+                "4bed1f74748d1c16"
+            ]
+        ]
+    },
+    {
+        "id": "4bed1f74748d1c16",
+        "type": "http request",
+        "z": "2fa74fdb06de204b",
+        "name": "POST /predict",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://daysie-audio-inference:9001/predict",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1210,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3a21a330eca5a82b",
+        "type": "function",
+        "z": "fb4877504222d7e5",
+        "name": "Build full paths",
+        "func": "const model_base = \"/data/daysie-und/model\";\nconst test_base = \"/data/daysie-und/test\";\nmsg.metadata_path = model_base + \"/\" + env.get(\"METADATA_FILE\");\nmsg.model_path = model_base + \"/\" + env.get(\"MODEL_FILE\");\nmsg.csv_path = test_base + \"/\" + env.get(\"CSV_FILE\");\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "3333b64cda495ce1"
+            ]
+        ]
+    },
+    {
+        "id": "3333b64cda495ce1",
+        "type": "file in",
+        "z": "fb4877504222d7e5",
+        "name": "Load metadata.json",
+        "filename": "metadata_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "2a8cfb8f9aae9886"
+            ]
+        ]
+    },
+    {
+        "id": "2a8cfb8f9aae9886",
+        "type": "change",
+        "z": "fb4877504222d7e5",
+        "name": "Set msg.metadata_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "metadata_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 700,
+        "y": 180,
+        "wires": [
+            [
+                "13d4bd6485a173a0"
+            ]
+        ]
+    },
+    {
+        "id": "13d4bd6485a173a0",
+        "type": "file in",
+        "z": "fb4877504222d7e5",
+        "name": "Load model.h5",
+        "filename": "model_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 490,
+        "y": 240,
+        "wires": [
+            [
+                "670eabca50f5e935"
+            ]
+        ]
+    },
+    {
+        "id": "670eabca50f5e935",
+        "type": "change",
+        "z": "fb4877504222d7e5",
+        "name": "Set msg.model_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "model_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 690,
+        "y": 240,
+        "wires": [
+            [
+                "9fc1a142032186ea"
+            ]
+        ]
+    },
+    {
+        "id": "9fc1a142032186ea",
+        "type": "file in",
+        "z": "fb4877504222d7e5",
+        "name": "Load csv",
+        "filename": "csv_path",
+        "filenameType": "msg",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "binary",
+        "allProps": false,
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "d83891c7cf163d5e"
+            ]
+        ]
+    },
+    {
+        "id": "d83891c7cf163d5e",
+        "type": "change",
+        "z": "fb4877504222d7e5",
+        "name": "Set msg.csv_file",
+        "rules": [
+            {
+                "t": "set",
+                "p": "csv_file",
+                "pt": "msg",
+                "to": "{ \"buffer\": $.payload, \"filename\": $.filename }",
+                "tot": "jsonata"
+            }
+        ],
+        "x": 680,
+        "y": 300,
+        "wires": [
+            [
+                "d2172d27c1e02623"
+            ]
+        ]
+    },
+    {
+        "id": "d2172d27c1e02623",
+        "type": "function",
+        "z": "fb4877504222d7e5",
+        "name": "Build multipart/form-data",
+        "func": "msg.headers = {\n    \"Content-Type\": \"multipart/form-data\"\n};\n\nmsg.payload = {\n    metadata_file: {\n        value: msg.metadata_file.buffer,\n        options: {\n            filename: msg.metadata_file.filename,\n            contentType: \"application/json\"\n        }\n    },\n    model_file: {\n        value: msg.model_file.buffer,\n        options: {\n            filename: msg.model_file.filename,\n            contentType: \"application/octet-stream\"\n        }\n    },\n    csv_file: {\n        value: msg.csv_file.buffer,\n        options: {\n            filename: msg.csv_file.filename,\n            contentType: \"text/csv\"\n        }\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 240,
+        "wires": [
+            [
+                "3cbeac038b8b17a5"
+            ]
+        ]
+    },
+    {
+        "id": "3cbeac038b8b17a5",
+        "type": "http request",
+        "z": "fb4877504222d7e5",
+        "name": "POST /predict",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://daysie-timeseries-inference:9002/predict",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1150,
+        "y": 240,
+        "wires": [
+            [
+                "c6864091a19307eb"
+            ]
+        ]
+    },
+    {
+        "id": "c6864091a19307eb",
+        "type": "file in",
+        "z": "fb4877504222d7e5",
+        "name": "CSV Convert ",
+        "filename": "/data/daysie-und/result/predicted_results.csv",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 890,
+        "y": 340,
+        "wires": [
+            [
+                "de950c2ee50e4643"
+            ]
+        ]
+    },
+    {
+        "id": "de950c2ee50e4643",
+        "type": "csv",
+        "z": "fb4877504222d7e5",
+        "name": "",
+        "spec": "rfc",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "none",
+        "multi": "mult",
+        "ret": "\\r\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 1030,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69612c891a14371f",
+        "type": "inject",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "ef9910f18428a153"
+            ]
+        ]
+    },
+    {
+        "id": "6d299a1d66eca4f1",
+        "type": "debug",
+        "z": "529d42eb902460a4",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "c4d9b4fe7961b021",
+        "type": "subflow:1154cd9ed8282204",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "env": [
+            {
+                "name": "MODEL_FILE",
+                "value": "images/model.h5",
+                "type": "str"
+            },
+            {
+                "name": "METADATA_FILE",
+                "value": "images/metadata.json",
+                "type": "str"
+            }
+        ],
+        "x": 500,
+        "y": 160,
+        "wires": [
+            [
+                "a303af05d355b264"
+            ],
+            [
+                "807dbe035884b57d"
+            ]
+        ]
+    },
+    {
+        "id": "ef9910f18428a153",
+        "type": "subflow:2fa74fdb06de204b",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "env": [
+            {
+                "name": "AUDIO_FILE",
+                "value": "pure_6.wav",
+                "type": "str"
+            }
+        ],
+        "x": 490,
+        "y": 460,
+        "wires": [
+            [
+                "6d299a1d66eca4f1"
+            ]
+        ]
+    },
+    {
+        "id": "aa0a6adf5ae934fe",
+        "type": "inject",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "c4d9b4fe7961b021"
+            ]
+        ]
+    },
+    {
+        "id": "a303af05d355b264",
+        "type": "debug",
+        "z": "529d42eb902460a4",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "807dbe035884b57d",
+        "type": "image",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 740,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "d08802afa6b09a34",
+        "type": "subflow:fb4877504222d7e5",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "env": [
+            {
+                "name": "CSV_FILE",
+                "value": "Steel_industry_data_test_2.csv",
+                "type": "str"
+            },
+            {
+                "name": "MODEL_FILE",
+                "value": "timeseries_1/model.h5",
+                "type": "str"
+            },
+            {
+                "name": "METADATA_FILE",
+                "value": "timeseries_1/metadata.json",
+                "type": "str"
+            }
+        ],
+        "x": 510,
+        "y": 680,
+        "wires": [
+            [
+                "79d267b8f8b4e268"
+            ],
+            [
+                "1ff5da87f283667a",
+                "7825b644b1e62e2f"
+            ]
+        ]
+    },
+    {
+        "id": "552ea6c1aa75a3d0",
+        "type": "inject",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 680,
+        "wires": [
+            [
+                "d08802afa6b09a34"
+            ]
+        ]
+    },
+    {
+        "id": "79d267b8f8b4e268",
+        "type": "debug",
+        "z": "529d42eb902460a4",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "1ff5da87f283667a",
+        "type": "debug",
+        "z": "529d42eb902460a4",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7825b644b1e62e2f",
+        "type": "function",
+        "z": "529d42eb902460a4",
+        "name": "function 1",
+        "func": "var pl = msg.payload[1].Predicted_Label\nvar tl = msg.payload[1].True_Label\n\nmsg.payload = {\n    data:{\n        PL:pl,\n        TL:tl\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 700,
+        "wires": [
+            [
+                "0efcf1aa01d59f5e",
+                "5e7d96aecd2d7d8b"
+            ]
+        ]
+    },
+    {
+        "id": "0efcf1aa01d59f5e",
+        "type": "debug",
+        "z": "529d42eb902460a4",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "5e7d96aecd2d7d8b",
+        "type": "mqtt out",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "topic": "@daysie/agent/local",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e3984e9953ef8fbc",
+        "x": 1000,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "72083729017f5ffd",
+        "type": "inject",
+        "z": "529d42eb902460a4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    }
+]
