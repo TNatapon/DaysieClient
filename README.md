@@ -18,7 +18,7 @@ Requirements for the software and other tools to build
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/TNatapon/daysie-edge.git
+   git clone https://github.com/TNatapon/DaysieClient.git
    ```
 2. Locate to DaysieClient diractory
    ```sh
